@@ -1,0 +1,27 @@
+admin-panel
+============fontend==============
+https://new.axilthemes.com/demo/template/papr/
+
+========comment========
+DB:: user_id, Post_id, id, comment, status
+
+============user====================
+DB: Email, name, phone, address,
+============ front page =======
+vedio list, trending news, top stories,
+=============single page =============
+signle post , registation form, comment form,' 10 comment view ---more comment, related news 
+
+================site setting====================
+logo, favicon, title, font page seo, kewword, fb. you, tw, insta, linkdn, coppyright, 
+================autenticate=========
+admin->
+reporter====>
+normal user 
+profile, all commenting post, 
+==================================
+step <-2
+design, textarea<- texteditor, image good show,
+step->3
+50 bug solve
+step 4 testing and upload

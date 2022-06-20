@@ -18,13 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $response = Http::post('http://example.com/users', [
-            'name' => 'Steve',
-            'role' => 'Network Administrator',
-        ]);
-        dd($response);
-        // $posts = Post::all();
-        // return view('admin.post.index',compact('posts'));
+        $posts = Post::all();
+        return view('admin.post.index', compact('posts'));
     }
 
     /**
@@ -34,8 +29,8 @@ class PostController extends Controller
      */
     public function create()
     {
-       $categories = Category::all(); 
-       return  view('admin.post.create', compact('categories'));
+        $categories = Category::all();
+        return  view('admin.post.create', compact('categories'));
     }
 
     /**
@@ -46,29 +41,29 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request['user_id']= Auth::id();
+        $request['user_id'] = Auth::id();
         $data = $request->validate([
-            'title'=>'required',
-            'slug'=>'required|unique:posts',
-            'user_id'=>'required',
-            'category_id'=>'required',
-            'feather_image'=>'image|required|max:3000',
-            'vedio'=>'nullable|url',
-            'description'=>'required',
-            'status'=>'required',
-            'seo_title'=>'string|nullable',
-            'seo_keyword'=>'string|nullable',
-            'seo_description'=>'string|nullable',   
+            'title' => 'required',
+            'slug' => 'required|unique:posts',
+            'user_id' => 'required',
+            'category_id' => 'required',
+            'feather_image' => 'image|required|max:3000',
+            'vedio' => 'nullable|url',
+            'description' => 'required',
+            'status' => 'required',
+            'seo_title' => 'string|nullable',
+            'seo_keyword' => 'string|nullable',
+            'seo_description' => 'string|nullable',
         ]);
-        
+
         // $data['slug']= Str::slug($request['title']);
         $file = $request->file('feather_image');
         // dd($file);
         $name = $file->hashName();
         request()->file('feather_image')->store('public/uploads');
-        $data['feather_image']= $name;
-       Post::create($data);
-       return redirect('admin/post')->with('success', 'successfully added');
+        $data['feather_image'] = $name;
+        Post::create($data);
+        return redirect('admin/post')->with('success', 'successfully added');
     }
 
     /**
@@ -91,7 +86,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-       return view('admin.post.edit', compact('post','categories'));
+        return view('admin.post.edit', compact('post', 'categories'));
     }
 
     /**
@@ -103,27 +98,27 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $request['user_id']= Auth::id();
+        $request['user_id'] = Auth::id();
         $data = $request->validate([
-            'title'=>'required',
-            'slug'=>'required',
-            'user_id'=>'required',
-            'category_id'=>'required',
-            'feather_image'=>'image|max:3000',
-            'vedio'=>'nullable|url',
-            'description'=>'required',
-            'status'=>'required',
-            'seo_title'=>'string|nullable',
-            'seo_keyword'=>'string|nullable',
-            'seo_description'=>'string|nullable',   
+            'title' => 'required',
+            'slug' => 'required',
+            'user_id' => 'required',
+            'category_id' => 'required',
+            'feather_image' => 'image|max:3000',
+            'vedio' => 'nullable|url',
+            'description' => 'required',
+            'status' => 'required',
+            'seo_title' => 'string|nullable',
+            'seo_keyword' => 'string|nullable',
+            'seo_description' => 'string|nullable',
         ]);
-        
+
         // $data['slug']= Str::slug($request['title']);
-        if(isset($attributes['feather_image'])){
+        if (isset($attributes['feather_image'])) {
             $file = $request->file('feather_image');
             $name = $file->hashName();
             request()->file('feather_image')->store('public/uploads');
-            $data['feather_image']= $name;
+            $data['feather_image'] = $name;
         }
         $post->update($data);
         return redirect('admin/post')->with('success', 'successfully updated');
