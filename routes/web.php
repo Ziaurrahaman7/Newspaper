@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SiteSettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,5 +27,6 @@ Route::get('/admin/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::resource('admin/category', CategoryController::class);
     Route::resource('admin/post', PostController::class);
+    Route::resource('admin/sitesetting', SiteSettingController::class);
 });
 require __DIR__.'/auth.php';

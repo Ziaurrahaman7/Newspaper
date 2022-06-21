@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 
 class SiteSettingController extends Controller
@@ -13,7 +14,8 @@ class SiteSettingController extends Controller
      */
     public function index()
     {
-        //
+        $sitesettings = SiteSetting::all();
+        return view('admin.sitesetting.index', compact('sitesettings'));
     }
 
     /**
@@ -23,7 +25,11 @@ class SiteSettingController extends Controller
      */
     public function create()
     {
-        //
+        $sitesetting = SiteSetting::first();
+        if(isset($sitesetting)){
+            return view('admin.sitesetting.update', compact('sitesetting'));
+        }
+        return view('admin.sitesetting.create');
     }
 
     /**
@@ -32,9 +38,43 @@ class SiteSettingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, SiteSetting $sitesetting)
     {
-        //
+        $sitesetting = request()->validate([
+            'title'=>'string|nullable',
+            'logo'=>'image|nullable',
+            'favicon'=>'image|nullable',
+            'phone'=>'required|min:11|max:11',
+            'email'=>'required|email',
+            'address'=>'required',
+            'facebook'=>'required',
+            'twitter'=>'string|nullable',
+            'youtube'=>'string|nullable',
+            'linkdin'=>'string|nullable',
+            'instagram'=>'string|nullable',
+            'whatsapp'=>'string|nullable',
+            'map'=>'string|nullable',
+            'copyright'=>'string|nullable',
+            'seo_title'=>'string|nullable',
+            'seo_keyword'=>'string|nullable',
+            'seo_content'=>'string|nullable',
+        ]);
+    //   dd($sitesetting);
+        $id = Sitesetting::pluck('id')->first();
+        if(isset($sitesetting['logo'])){
+            $file = $request->file('logo');
+            $name = $file->hashName();
+            request()->file('logo')->store('public/uploads');
+            $sitesetting['logo'] = $name;
+           }
+        if(isset($sitesetting['favicon'])){
+            $file = $request->file('favicon');
+            $name = $file->hashName();
+            request()->file('favicon')->store('public/uploads');
+            $sitesetting['favicon'] = $name;
+        }
+        Sitesetting::updateOrCreate(['id'=>$id], $sitesetting);
+        return redirect('admin/sitesetting')->with('success', 'Successfully added');
     }
 
     /**
