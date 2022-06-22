@@ -41,7 +41,7 @@ class CategoryController extends Controller
             'status'=>'required'
         ]);
         Category::create($data);
-        return redirect('category')->with('success', 'Successfully Created');
+        return redirect('admin/category')->with('success', 'Successfully Created');
     }
 
     /**
@@ -80,7 +80,7 @@ class CategoryController extends Controller
             'status'=>'required'
         ]);
         $category->update($data);
-        return redirect('category')->with('success', 'Updated successfully');
+        return redirect('admin/category')->with('success', 'Updated successfully');
     }
 
     /**
@@ -92,6 +92,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect('category')->with('success', 'Deleted successfully');
+        return redirect('admin/category')->with('success', 'Deleted successfully');
     }
 }

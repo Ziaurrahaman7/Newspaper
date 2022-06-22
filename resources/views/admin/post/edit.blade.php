@@ -6,7 +6,7 @@
         @csrf
         @method('PATCH')
         <div class="row mb-3">
-            <x-form.input  onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" name="title" :value="old('title',$post->title)"/>
+            <x-form.input  onload="convertToSlug(this.value)" onchange="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" name="title" :value="old('title',$post->title)"/>
                 <p id="slug-text" style="display:none;" class="text-danger"></p>
                 <div class="col-md-6 mt-3">
                     <label class="mt-3">Slug</label>

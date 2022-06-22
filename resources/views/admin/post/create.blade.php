@@ -5,7 +5,7 @@
         <form method="post" action="/admin/post" enctype="multipart/form-data">
         @csrf
         <div class="row mb-3">
-            <x-form.input onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" name="title"/>
+            <x-form.input onload="convertToSlug(this.value)" onchange="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" name="title"/>
             <p id="slug-text" style="display:none;" class="text-danger"></p>
             <div class="col-md-6 mt-3">
             <label class="mt-3">Slug</label>

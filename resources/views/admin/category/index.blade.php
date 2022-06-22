@@ -19,9 +19,9 @@
         <tr>
             <td>{{ucwords($category->title)}}</td>
             <td>{{ucwords($category->status)}}</td>
-            <td> <a href="/category/{{$category->id}}/edit/" target="_blank" rel="noopener noreferrer">Edit</a> | 
+            <td> <a href="/admin/category/{{$category->id}}/edit/" target="_blank" rel="noopener noreferrer">Edit</a> | 
                 
-                <form action="/category/{{$category->id}}" method="post">
+                <form action="/admin/category/{{$category->id}}" method="post">
                 @csrf
                 @method('delete')
                 <button> Delete</button>
