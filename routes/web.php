@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/{slug}', [HomeController::class, 'show']);
 // ============admin=================
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');

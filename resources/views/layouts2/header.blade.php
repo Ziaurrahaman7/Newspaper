@@ -77,6 +77,7 @@
         .axil-img-container.flex-height-container .vedio {
             height: 100%;
             object-fit: cover;
+			min-height:350px;
         }
         .axil-img-container .vedio {
             width: 100%;

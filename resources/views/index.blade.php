@@ -7,27 +7,29 @@
         </div>
         <div class="row">
             <div class="col-lg-8">
+                @foreach ($topstories as $topstory )
+                @php $loopindex = $loop->index+1 @endphp
+                @if ($loopindex > 1) @continue @endif
                 <div class="axil-img-container m-b-xs-30">
                     <a href="post-format-standard.html" class="d-block">
-                        <img src="assets/images/top-stories/top-stories-1.jpg" alt="gallery images"
+                        <img src="{{asset("storage/uploads/".$topstory->feather_image)}}" alt="gallery images"
                             class="w-100">
                         <div class="grad-overlay"></div>
                     </a>
                     <div class="media post-block position-absolute">
                         <div class="media-body media-body__big">
                             <div class="post-cat-group m-b-xs-10">
-                                <a href="business.html" class="post-cat cat-btn bg-color-purple-one">TRAVEL</a>
+                                <a href="{{$topstory->category_id}}" class="post-cat cat-btn bg-color-purple-one">{{$topstory->category->title}}</a>
                             </div>
                             <div class="axil-media-bottom">
                                 <h3 class="axil-post-title hover-line hover-line"><a
-                                        href="post-format-standard.html">World Travel Holdings Will Be Honored
-                                        Alongside Other Recipients</a></h3>
+                                        href="{{$topstory->slug}}">{{$topstory->title}}</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
-                                        <li>By <a href="#" class="post-author">Ashley Graham</a></li>
-                                        <li><i class="dot">.</i>July 17, 2019</li>
-                                        <li><a href="#"><i class="feather icon-activity"></i>5k Views</a></li>
-                                        <li><a href="#"><i class="feather icon-share-2"></i>230 Shares</a></li>
+                                        <li>By <a href="#" class="post-author">{{$topstory->user->name}}</a></li>
+                                        <li><i class="dot">.</i>{{$topstory->updated_at->toDateString()}}</li>
+                                        {{-- <li><a href="#"><i class="feather icon-activity"></i>5k Views</a></li> --}}
+                                        {{-- <li><a href="#"><i class="feather icon-share-2"></i>230 Shares</a></li> --}}
                                     </ul>
                                 </div>
                             </div>
@@ -35,31 +37,32 @@
                     </div>
                     <!-- End of .post-block -->
                 </div>
+                @endforeach
                 <!-- End of .axil-img-container -->
             </div>
             <!-- End of .grid-item -->
             <div class="col-lg-4">
+                @foreach ($topstories as $topstory )
+                @if ($loop->first) @continue @endif
                 <div class="axil-img-container m-b-xs-30">
-                    <a href="post-format-standard.html" class="d-block">
-                        <img src="assets/images/top-stories/top-stories-2.jpg" alt="gallery images"
+                    <a href="{{$topstory->slug}}" class="d-block">
+                        <img src="{{asset("storage/uploads/".$topstory->feather_image)}}" alt="gallery images"
                             class="w-100">
                         <div class="grad-overlay"></div>
                     </a>
                     <div class="media post-block position-absolute">
                         <div class="media-body">
                             <div class="post-cat-group m-b-xs-10">
-                                <a href="business.html"
-                                    class="post-cat cat-btn btn-mid bg-color-purple-two">BUEATY</a>
+                                <a href="{{$topstory->category_id}}"
+                                    class="post-cat cat-btn btn-mid bg-color-purple-two">{{$topstory->category->title}}</a>
                             </div>
                             <div class="axil-media-bottom">
                                 <h3 class="axil-post-title hover-line hover-line"><a
-                                        href="post-format-standard.html">Unmatched Toner Cartridge Quality 20
-                                        Less Than Oem Price</a></h3>
+                                        href="{{$topstory->slug}}">{{$topstory->title}}</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
-                                        <li><a href="post-format-standard.html"
-                                                class="d-flex align-items-center"><span>By Amachea
-                                                    Jajah</span></a></li>
+                                        <li><a href="#"
+                                                class="d-flex align-items-center"><span>By {{$topstory->user->name}}</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -67,38 +70,7 @@
                     </div>
                     <!-- End of .post-block -->
                 </div>
-                <!-- End of .axil-img-container -->
-                <div class="axil-img-container m-b-xs-30">
-                    <a href="post-format-standard.html" class="d-block">
-                        <img src="assets/images/top-stories/top-stories-3.jpg" alt="gallery images"
-                            class="w-100">
-                        <div class="grad-overlay"></div>
-                    </a>
-
-                    <div class="media post-block position-absolute">
-                        <div class="media-body">
-                            <div class="post-cat-group m-b-xs-10">
-                                <a href="business.html"
-                                    class="post-cat cat-btn btn-mid bg-color-blue-three">TECHNOLOGY</a>
-                            </div>
-                            <div class="axil-media-bottom">
-                                <h3 class="axil-post-title hover-line hover-line"><a
-                                        href="post-format-standard.html">Stocking Your
-                                        Restaurant Kitchen Finding
-                                        Reliable
-                                        Sellers</a></h3>
-                                <div class="post-metas">
-                                    <ul class="list-inline">
-                                        <li><a href="#" class="d-flex align-items-center"><span>By David
-                                                    Brown</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of .post-block -->
-                </div>
-                <!-- End of .axil-img-container -->
+                @endforeach
             </div>
             <!-- End of .col-lg-4 -->
         </div>
@@ -264,11 +236,14 @@
         <!-- End of .section-title -->
         <div class="row">
             <div class="col-lg-8">
+                @foreach ($vedios as $vedio)
+                @php $loopindex = $loop->index+1 @endphp
+                    @if ($loopindex > 1) @continue @endif
                 <div class="axil-img-container flex-height-container">
                     <span class="d-block h-100">
                         {{-- <img src="assets/images/video-post/video-post-latest.jpg" alt="video post"
                             class="w-100"> --}}
-                            <iframe class="w-100 vedio" src="https://www.youtube.com/embed/_lkw2xtNMmk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe class="w-100 vedio" src="https://www.youtube.com/embed/{{$vedio->vedio}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <div class="grad-overlay grad-overlay__transparent"></div>
                         <div class="video-popup video-play-btn video-play-btn__big"></div>
                     </span>
@@ -276,14 +251,11 @@
                         <div class="media-body media-body__big">
                             <div class="axil-media-bottom mt-auto">
                                 <h3 class="axil-post-title hover-line hover-line"><a
-                                        href="post-format-standard.html">Maui
-                                        By Air The
-                                        Best Way Around The
-                                        Island</a></h3>
+                                        href="{{$vedio->slug}}">{{$vedio->title}}</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
-                                        <li>By <a href="#" class="post-author">Ashley Graham</a></li>
-                                        <li><i class="dot">.</i>July 23, 2019</li>
+                                        <li>By <a href="#" class="post-author">{{$vedio->user->name}}</a></li>
+                                        <li><i class="dot">.</i>{{$vedio->updated_at->toDateString()}}</li>
                                         {{-- <li><a href="#"><i class="feather icon-activity"></i>5k Views</a></li> --}}
                                         {{-- <li><a href="#"><i class="feather icon-share-2"></i>230 Shares</a></li> --}}
                                     </ul>
@@ -294,30 +266,28 @@
                     </div>
                     <!-- End of .post-block -->
                 </div>
+                @endforeach
                 <!-- End of .axil-img-container -->
             </div>
             <!-- End of .col-lg-8 -->
             <div class="col-lg-4">
                 <div class="axil-content">
                     @foreach ($vedios as $vedio)
+                    @if ($loop->first) @continue @endif
                     <div class="media post-block post-block__small post-block__on-dark-bg m-b-xs-30">
-                        <span href="post-format-video.html" class="align-self-center">
+                        <span href="{{$vedio->slug}}" class="align-self-center">
                             {{-- <img class=" m-r-xs-30" src="assets/images/video-post/video-post-1.jpg" alt=""> --}}
-                            <iframe style="width:140px;height:100px" class="m-r-xs-30 vedio" src="https://www.youtube.com/embed/nxxGTBqbHi4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe style="width:140px;height:100px" class="m-r-xs-30 vedio" src="https://www.youtube.com/embed/{{$vedio->vedio}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </span>
                         <div class="media-body">
                             <div class="post-cat-group">
-                                <a href="post-format-video.html" class="post-cat color-blue-three">BEAUTY</a>
+                                <a href="{{$vedio->category_id}}" class="post-cat color-blue-three">{{$vedio->category->title}}</a>
                             </div>
                             <h3 class="axil-post-title hover-line hover-line"><a
-                                    href="post-format-video.html">Stocking
-                                    Your
-                                    Restaurant Kitchen Finding
-                                    Reliable
-                                    Sellers</a></h3>
+                                    href="{{$vedio->slug}}">{{$vedio->title}}</a></h3>
                             <div class="post-metas">
                                 <ul class="list-inline">
-                                    <li>By <a href="#">Amachea Jajah</a></li>
+                                    <li>By <a href="#">{{$vedio->user->name}}</a></li>
                                 </ul>
                             </div>
                         </div>
