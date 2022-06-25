@@ -51,6 +51,9 @@
                     {{ __('Log in') }}
                 </x-button>
             </div>
+            <div class="block mt-4">
+                <p>Have no account Yet ! <a style="color:#ff2c54" href="/register">Registation here</a>
+                </div>
         </form>
     </x-auth-card>
 </x-guest-layout>

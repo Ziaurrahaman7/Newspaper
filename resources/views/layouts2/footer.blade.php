@@ -46,7 +46,7 @@
 					</ul> --}}
 					<!-- End of .footer-bottom-links -->
 					<p class="axil-copyright-txt">
-						© 2019. All rights reserved by Your Company.
+						© {{date('y')}}. All rights reserved by Your Company.
 					</p>
 				</div>
 				<!-- End of .footer-bottom -->

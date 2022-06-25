@@ -98,8 +98,8 @@
         <div class="container">
             <div class="navbar-inner">
                 <div class="brand-logo-container">
-                    <a href="index.html">
-                        <img src="assets/images/logo-black.svg" alt="" class="brand-logo">
+                    <a href="/">
+                        <img src="@isset($setting->facebook){{asset("storage/uploads/".$setting->logo)}}@endisset" alt="" class="brand-logo">
                     </a>
                 </div>
                 <!-- End of .brand-logo-container -->
@@ -118,7 +118,7 @@
                         </li> --}}
                        @foreach ($menus as $mainmenu)
                         <li class="has-dropdown">
-                            <a href="{{$mainmenu->id}}">{{$mainmenu->title}}</a>
+                            <a href="/category/{{$mainmenu->id}}">{{$mainmenu->title}}</a>
                         </li>
                        @endforeach
                     </ul>
