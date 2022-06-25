@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Category;
@@ -13,7 +14,7 @@ class HomeController extends Controller
 {
    public function index(){
    //  $commentMax=  Comment::select(['post_id'])->withCount('comment')->with('post')->groupBy('post_id')->get();
-   $commentMax= Comment::select(['post_id'])->with('post')->groupBy('post_id')->take(6)->get();
+   $commentMax= Comment::select(['post_id'])->with('post')->where('created_at', '>', \Carbon\Carbon::now()->subWeek())->groupBy('post_id')->take(6)->get();
    //  dd($commentMax);
     $topstories = Post::take(3)->whereNull('vedio')->where('status', 1)->with('user','category')->get()->sortDesc();
     $vedios = Post::take(5)->whereNotNull('vedio')->where('status', 1)->with('user','category')->get()->sortDesc();
