@@ -19,4 +19,19 @@ class CommentController extends Controller
         Comment::create($request->all());
         return back();
     }
+
+    // ===============admin part============
+    public function allcomment(){
+       $comments = Comment::with('user','post','category')->get();
+       return view('admin.comment.index', compact('comments'));
+    }
+
+    public function approved(Request $request, Comment $comment){
+      $data =  $request->validate([
+        'approved'=>'required'    
+        ]);
+        // dd($data);
+        $comment->update($data);
+        return redirect('admin/comment');
+    }
 }

@@ -31,5 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/category', CategoryController::class);
     Route::resource('admin/post', PostController::class);
     Route::resource('admin/sitesetting', SiteSettingController::class);
+    Route::get('admin/comment', [CommentController::class, 'allcomment'])->name('admin.comment');
+    Route::post('admin/comment/{comment}/edit', [CommentController::class, 'approved'])->name('admin.comment.approved');
 });
 require __DIR__.'/auth.php';

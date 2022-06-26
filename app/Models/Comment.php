@@ -20,7 +20,7 @@ class Comment extends Model
     public function comment(){
         return $this->hasMany(Comment::class, 'post_id');
     }
-    // public function category(){
-    //     return $this->belongsTo(Category::class);
-    // }
+    public function category(){
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }
