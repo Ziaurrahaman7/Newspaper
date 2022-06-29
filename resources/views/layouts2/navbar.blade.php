@@ -13,7 +13,7 @@
                 <div class="col-lg-6">
                     <ul class="main-navigation side-navigation list-inline flex-column">
                       @foreach ($menus as $mainmenu )
-                        <li><a href="{{$mainmenu->id}}">{{$mainmenu->title}}</a></li>
+                        <li><a href="/category/{{$mainmenu->id}}">{{$mainmenu->title}}</a></li>
                       @endforeach
                     </ul>
                     <!-- End of .main-navigation -->

@@ -20,7 +20,10 @@
             @error('slug')
             <p style="color:red">{{$message}}</p>  
             @enderror
-            <x-form.textarea  name="description"/>
+           <div class="col-md-12 mt-3">
+            <label for="">Description</label>
+            <textarea  class="ckeditor" rows="10" cols="12" name="description"></textarea>
+           </div>
             <div class="col-md-6 mt-3">
                 <label>Select Category</label>
             <select class="form-select" name="category_id">

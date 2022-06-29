@@ -30,15 +30,15 @@
 							</div> --}}
                             @foreach ($posts as $post)
 							<div class="media post-block post-block__mid m-b-xs-30">
-								<a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
+								<a href="/post/{{$post->slug}}" class="align-self-center"><img class=" m-r-xs-30"
 										src="{{asset("storage/uploads/".$post->feather_image)}}" alt=""></a>
 								<div class="media-body">
 									<div class="post-cat-group m-b-xs-10">
 										<p class="post-cat cat-btn bg-color-blue-one">{{$post->category->title}}</p>
 									</div>
 									<h3 class="axil-post-title hover-line hover-line"><a
-											href="/post/{{$post->slug}}">{{$post->title}}</a></h3>
-									<p class="mid">{{$post->description}}</p>
+											href="/post/{{$post->slug}}">{{Str::limit($post->title,35,'...')}}</a></h3>
+									<p class="mid">{{Str::limit($post->description,40,'...')}}</p>
 									<div class="post-metas">
 										<ul class="list-inline">
 											<li>By <a href="#">{{$post->user->name}}</a></li>

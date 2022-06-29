@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<x-table link="/admin/category/create" name="Add category" title="category">
+<x-table link="/admin/category/create" name="Add category" title="Category">
     @if ($message = Session::get('success'))
 <div class="alert alert-success alert-block">
 	<button type="button" class="close" data-dismiss="alert">×</button>	

@@ -18,7 +18,11 @@
                 <x-form.input type="file" name="feather_image"  :value="old('feather_image',$post->feather_image)"/>
                 <img style="width:80px; height:80px" src="{{asset('storage/uploads/'.$post->feather_image)}}">
                 <x-form.input name="vedio"  :value="old('vedio',$post->vedio)"/>
-                <x-form.textarea  name="description">{{old('description',$post->description)}}</x-form.textarea> 
+                   <div class="col-md-12 mt-4">
+                    <label for="">Description</label>
+                    <textarea class="ckeditor" name="description" id="" cols="30" rows="10">{{old('description',$post->description)}}</textarea>
+                   </div>
+                {{-- <x-form.textarea    name="description"></x-form.textarea>  --}}
             <div class="col-md-6  mt-3">
                 <div class="form-group">
                     <label for="role">Select Category</label>

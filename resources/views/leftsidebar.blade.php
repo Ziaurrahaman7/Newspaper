@@ -42,9 +42,9 @@
                 <li class="nav-item col">
                     <a class="nav-link" data-bs-toggle="pill" href="#popular-post">Vedios</a>
                 </li>
-                <li class="nav-item col">
+                {{-- <li class="nav-item col">
                     <a class="nav-link" data-bs-toggle="pill" href="#comments">Comments</a>
-                </li>
+                </li> --}}
             </ul>
 
             <div class="tab-content">
@@ -61,7 +61,7 @@
                                         class="post-cat color-blue-three">{{$topstoy->category->title}}</a>
                                 </div>
                                 <h4 class="axil-post-title hover-line hover-line"><a
-                                        href="/post/{{$topstoy->slug}}">{{$topstoy->title}}
+                                        href="/post/{{$topstoy->slug}}">{{Str::limit($topstoy->title,35,'...')}}
                                         </a></h4>
                                 <div class="post-metas">
                                     <ul class="list-inline">
@@ -86,7 +86,7 @@
                                 <a href="/category/{{$vedio->category_id}}"
                                     class="post-cat color-blue-one">{{$vedio->category->title}}</a>
                                 <h4 class="axil-post-title hover-line hover-line"><a
-                                        href="/post/{{$vedio->slug}}">{{$vedio->title}}</a></h4>
+                                        href="/post/{{$vedio->slug}}">{{Str::limit($vedio->title,35,'...')}}</a></h4>
                                 <div class="post-metas">
                                     <ul class="list-inline">
                                         <li>By <a href="#">{{$vedio->user->name}}</a></li>
@@ -99,92 +99,7 @@
                     <!-- End of .content -->
                 </div>
                 <!-- End of .tab-pane -->
-                <div class="tab-pane fade" id="comments">
-                    <div class="axil-content">
-                        <div class="media post-block post-block__small">
-                            <a href="post-format-standard.html" class="align-self-center"><img
-                                    class=" m-r-xs-30" src="assets/images/media/small-media-2.jpg"
-                                    alt="media image"></a>
-                            <div class="media-body">
-                                <a href="post-format-standard.html"
-                                    class="post-cat color-red-two">SPORTS</a>
-                                <h4 class="axil-post-title hover-line hover-line"><a
-                                        href="post-format-standard.html">RCB
-                                        vs RR, IPL 2019:
-                                        Bangalore, Rajasthan desperate
-                                        for
-                                        win</a></h4>
-                                <div class="post-metas">
-                                    <ul class="list-inline">
-                                        <li>By <a href="#">Ahmad Nazeri</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of .post-block -->
-                        <div class="media post-block post-block__small">
-                            <a href="post-format-standard.html" class="align-self-center"><img
-                                    class=" m-r-xs-30" src="assets/images/media/small-media-1.jpg"
-                                    alt="media image"></a>
-                            <div class="media-body">
-                                <a href="post-format-standard.html"
-                                    class="post-cat color-blue-three">BEAUTY</a>
-                                <h4 class="axil-post-title hover-line hover-line"><a
-                                        href="post-format-standard.html">Stocking Your Restaurant
-                                        Kitchen Finding Reliable
-                                        Sellers</a></h4>
-                                <div class="post-metas">
-                                    <ul class="list-inline">
-                                        <li>By <a href="#">Amachea Jajah</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of .post-block -->
-                        <div class="media post-block post-block__small">
-                            <a href="post-format-standard.html" class="align-self-center"><img
-                                    class=" m-r-xs-30" src="assets/images/media/small-media-3.jpg"
-                                    alt="media image"></a>
-                            <div class="media-body">
-                                <a href="post-format-standard.html"
-                                    class="post-cat color-green-three">TRAVEL</a>
-                                <h4 class="axil-post-title hover-line hover-line"><a
-                                        href="post-format-standard.html">Trip
-                                        To Iqaluit In Nunavut A
-                                        Canadian Arctic
-                                        City</a>
-                                </h4>
-                                <div class="post-metas">
-                                    <ul class="list-inline">
-                                        <li>By <a href="post-format-standard.html">Xu Jianhong</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of .post-block -->
-                        <div class="media post-block post-block__small">
-                            <a href="post-format-standard.html" class="align-self-center"><img
-                                    class=" m-r-xs-30" src="assets/images/media/small-media-4.jpg"
-                                    alt="media image"></a>
-                            <div class="media-body">
-                                <a href="post-format-standard.html"
-                                    class="post-cat color-blue-one">FASHION</a>
-                                <h4 class="axil-post-title hover-line hover-line"><a
-                                        href="post-format-standard.html">To
-                                        Keep Makeup Looking Fresh
-                                        Take A Powder</a></h4>
-                                <div class="post-metas">
-                                    <ul class="list-inline">
-                                        <li>By <a href="#">Sergio Pliego</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of .post-block -->
-                    </div>
-                    <!-- End of .content -->
-                </div>
+                
                 <!-- End of .tab-pane -->
             </div>
             <!-- End of .tab-content -->

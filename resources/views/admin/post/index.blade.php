@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<x-table link="/admin/post/create" name="Add post" title="post">
+<x-table link="/admin/post/create" name="Add post" title="Post">
     @if ($message = Session::get('success'))
 <div class="alert alert-success alert-block">
 	<button type="button" class="close" data-dismiss="alert">×</button>	
@@ -20,8 +20,8 @@
 <tbody>
     @foreach ($posts as  $post)
         <tr>
-            <td>{{ucwords($post->title)}}</td>
-            <td>{{$post->description }}</td>
+            <td><strong>{{ucwords(Str::limit($post->title,40,'...'))}}</strong></td>
+            <td>{{Str::limit($post->description,70,'...') }}</td>
             <td>{{$post->user_id }}</td>
             <td>{{$post->status }}</td>
             <td>{{$post->category_id }}</td>

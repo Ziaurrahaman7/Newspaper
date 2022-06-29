@@ -83,6 +83,40 @@
             width: 100%;
             transition: all 0.5s;
         }
+		.axil-img-container img{
+			margin: 0 auto;
+    max-width: none;
+    object-fit: cover;
+    margin-left: 50%;
+    transform: translateX(-50%);
+		}
+	.axil-img-container:hover > a > img{
+	margin: 0 auto;
+    max-width: none;
+    object-fit: cover;
+    margin-left: 50%;
+    transform: translateX(-50%);
+	}
+	@media (min-width: 800px){
+	.post-block img { 
+	height:100px;
+	margin: 0 auto;
+	width: 200px;
+	}}
+	/* .post-block:hover img { 
+	height:200px;
+	margin: 0 auto;
+    max-width: none;
+    object-fit: cover;
+    margin-left: 50%;
+    transform: translateX(-50%);
+	} */
+	p{
+		font-size: 14px;
+	}
+	.has-dropdown > a::after{
+		display: none;
+	}
     </style>
 </head>
 

@@ -6,19 +6,27 @@ use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Permission;
 
 class HomeController extends Controller
 {
    public function index(){
+      // $role = Role::create(['name' => 'admin']);
+      // $permission = Permission::create(['name' => 'admin access']);
+      // $role = User::find(1);
+      // $role->givePermissionTo('admin access');
    //  $commentMax=  Comment::select(['post_id'])->withCount('comment')->with('post')->groupBy('post_id')->get();
    $commentMax= Comment::select(['post_id'])->with('post')->where('created_at', '>', \Carbon\Carbon::now()->subWeek())->groupBy('post_id')->take(6)->get();
    //  dd($commentMax);
-    $topstories = Post::take(3)->whereNull('vedio')->where('status', 1)->with('user','category')->get()->sortDesc();
+    $topnews = Post::take(3)->whereNull('vedio')->where('status', 1)->with('user','category')->get()->sortDesc();
+   //  dd($topstories);
     $vedios = Post::take(5)->whereNotNull('vedio')->where('status', 1)->with('user','category')->get()->sortDesc();
-    return view('index', compact('topstories','vedios','commentMax'));
+    return view('index', compact('topnews','vedios','commentMax'));
    }
 
    public function show($slug){

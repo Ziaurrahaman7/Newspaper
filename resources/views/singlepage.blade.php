@@ -61,23 +61,6 @@
                            </div>
                     </article>
                     <!-- End of .post-details -->
-
-                    <div class="post-shares m-t-xs-60">
-                        <div class="title">SHARE:</div>
-                        <ul class="social-share social-share__rectangular">
-                            <li><a href="#" class="btn bg-color-twitch"><i class="fab fa-twitch"></i>
-                                    1K+</a>
-                            </li>
-                            <li><a href="#" class="btn bg-color-facebook"><i class="fab fa-facebook-f"></i>
-                                    1K+</a>
-                            </li>
-                            <li><a href="#" class="btn bg-color-twitter"><i class="fab fa-twitter"></i>1000+</a>
-                            </li>
-                            <li><a href="#" class="btn bg-color-linkedin"><i
-                                        class="fab fa-linkedin-in"></i>1M+</a>
-                            </li>
-                        </ul>
-                    </div>
                     <!-- End of .post-shares -->
 
                     <hr class="m-t-xs-50 m-b-xs-60">

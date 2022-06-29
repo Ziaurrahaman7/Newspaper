@@ -7,12 +7,13 @@
         </div>
         <div class="row">
             <div class="col-lg-8">
-                @foreach ($topstories as $topstory )
+                @foreach ($topnews as $topstory )
+               
                 @php $loopindex = $loop->index+1 @endphp
                 @if ($loopindex > 1) @continue @endif
                 <div class="axil-img-container m-b-xs-30">
                     <a href="/post/{{$topstory->slug}}" class="d-block">
-                        <img src="{{asset("storage/uploads/".$topstory->feather_image)}}" alt="gallery images"
+                        <img style="height: 400px;" src="{{asset("storage/uploads/".$topstory->feather_image)}}" alt="gallery images"
                             class="w-100">
                         <div class="grad-overlay"></div>
                     </a>
@@ -23,7 +24,7 @@
                             </div>
                             <div class="axil-media-bottom">
                                 <h3 class="axil-post-title hover-line hover-line"><a
-                                        href="/post/{{$topstory->slug}}">{{$topstory->title}}</a></h3>
+                                        href="/post/{{$topstory->slug}}">{{Str::limit($topstory->title,45,'...')}}</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
                                         <li>By <a href="#" class="post-author">{{$topstory->user->name}}</a></li>
@@ -42,11 +43,11 @@
             </div>
             <!-- End of .grid-item -->
             <div class="col-lg-4">
-                @foreach ($topstories as $topstory )
+                @foreach ($topnews as $topstory )
                 @if ($loop->first) @continue @endif
                 <div class="axil-img-container m-b-xs-30">
                     <a href="/post/{{$topstory->slug}}" class="d-block">
-                        <img src="{{asset("storage/uploads/".$topstory->feather_image)}}" alt="gallery images"
+                        <img style="height: 185px;" src="{{asset("storage/uploads/".$topstory->feather_image)}}" alt="gallery images"
                             class="w-100">
                         <div class="grad-overlay"></div>
                     </a>
@@ -58,7 +59,7 @@
                             </div>
                             <div class="axil-media-bottom">
                                 <h3 class="axil-post-title hover-line hover-line"><a
-                                        href="/post/{{$topstory->slug}}">{{$topstory->title}}</a></h3>
+                                        href="/post/{{$topstory->slug}}">{{Str::limit($topstory->title , 40, '...')}}</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
                                         <li><a href="#"
@@ -96,12 +97,13 @@
                             {{-- <a href="/category/{{$comment->post->category_id}}" class="post-cat cat-btn bg-color-blue-grey-one"></a> --}}
                         </div>
                         <h3 class="axil-post-title hover-line hover-line"><a
-                                href="/post/{{$comment->post->slug}}">{{$comment->post->title}}</a></h3>
+                                href="/post/{{$comment->post->slug}}">{{Str::limit($comment->post->title, 30, '...')}}</a></h3>
                         <div class="post-metas">
-                            <ul class="list-inline">
-                                <p>{{$comment->post->description}}</p>
+                            <div class="list-inline">
+                        <h3 class="axil-post-title">
+                            <p>{{Str::limit($comment->post->description , 70, '..');}}<a style="color:brown" href="">More</a></p>
                                 {{-- <li>By <a href="#">vv</a></li> --}}
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -138,7 +140,7 @@
                         <div class="media-body media-body__big">
                             <div class="axil-media-bottom mt-auto">
                                 <h3 class="axil-post-title hover-line hover-line"><a
-                                        href="/post/{{$vedio->slug}}">{{$vedio->title}}</a></h3>
+                                        href="/post/{{$vedio->slug}}">{{Str::limit($vedio->title,30,'...')}}</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
                                         <li>By <a href="#" class="post-author">{{$vedio->user->name}}</a></li>
@@ -171,7 +173,7 @@
                                 <a href="/category/{{$vedio->category_id}}" class="post-cat color-blue-three">{{$vedio->category->title}}</a>
                             </div>
                             <h3 class="axil-post-title hover-line hover-line"><a
-                                    href="/post/{{$vedio->slug}}">{{$vedio->title}}</a></h3>
+                                    href="/post/{{$vedio->slug}}">{{Str::limit($vedio->title,30,'...')}}</a></h3>
                             <div class="post-metas">
                                 <ul class="list-inline">
                                     <li>By <a href="#">{{$vedio->user->name}}</a></li>

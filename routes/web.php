@@ -25,9 +25,9 @@ Route::post('/comment', [CommentController::class, 'index'])->name('comment');
 // ============admin=================
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware('can:admin')->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware('can:admin')->group(function () {
     Route::resource('admin/category', CategoryController::class);
     Route::resource('admin/post', PostController::class);
     Route::resource('admin/sitesetting', SiteSettingController::class);
