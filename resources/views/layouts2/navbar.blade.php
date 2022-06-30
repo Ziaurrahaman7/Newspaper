@@ -21,6 +21,20 @@
                 <!-- End of  .col-md-6 -->
                 <div class="col-lg-6">
                     <div class="axil-contact-info-inner">
+                        @auth
+                        <ul class="list-group">
+                            <li><a style="color:#ff2c54;" href="/profile/{{Auth::user()->id}}">{{Ucwords(Auth::user()->name) }}</a></li>
+                        <li><form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <a href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                        </a>
+                        </form></li>
+                        </ul>
+                        @endauth
                         <h5 class="h5 m-b-xs-10">
                             Contact Information
                         </h5>
@@ -75,8 +89,19 @@
                     <ul class="header-top-nav list-inline justify-content-center justify-content-md-start">
                         <li class="current-date">{{date('d, M, Y')}}</li>
                         <li><a href="#">Advertisement</a></li>
-                        {{-- <li><a href="about-us.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li> --}}
+                        {{-- {{-- <li><a href="about-us.html">About</a></li> --}}
+                        @auth
+                        <li><a style="color:#ff2c54;" href="/profile/{{Auth::user()->id}}">{{Ucwords(Auth::user()->name) }}</a></li>
+                        <li><form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form></li>
+                        @endauth
                     </ul>
                     <!-- End of .header-top-nav -->
                 </div>

@@ -19,8 +19,10 @@ class HomeController extends Controller
       // $role = Role::create(['name' => 'admin']);
       // $permission = Permission::create(['name' => 'admin access']);
       // $role = User::find(1);
-      // $role->givePermissionTo('admin access');
+      // $role->givePermissionTo(["all access"]);
    //  $commentMax=  Comment::select(['post_id'])->withCount('comment')->with('post')->groupBy('post_id')->get();
+   // $role = Role::create(['name' => 'admin']);
+   // $permission = Permission::create(['name' => 'all access']);
    $commentMax= Comment::select(['post_id'])->with('post')->where('created_at', '>', \Carbon\Carbon::now()->subWeek())->groupBy('post_id')->take(6)->get();
    //  dd($commentMax);
     $topnews = Post::take(3)->whereNull('vedio')->where('status', 1)->with('user','category')->get()->sortDesc();
@@ -52,4 +54,9 @@ class HomeController extends Controller
     
    //    return view('leftsidebar', compact('vedios','topstories',));
    // }
+
+   public function profile($userId){
+      $user = User::where('id', $userId)->first();
+      return view('profile', compact('user'));
+   }
 }

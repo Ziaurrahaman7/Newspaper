@@ -28,11 +28,11 @@ function convertToSlug( str ) {
       $('.ckeditor').ckeditor();
   });
 </script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   CKEDITOR.replace('wysiwyg-editor', {
       filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
       filebrowserUploadMethod: 'form'
   });
-</script>
+</script> --}}
 </body>
 </html>
